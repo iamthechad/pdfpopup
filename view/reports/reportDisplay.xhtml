@@ -1,0 +1,28 @@
+<p:document xmlns:p="http://jboss.com/products/seam/pdf"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+            xmlns:f="http://java.sun.com/jsf/core"
+            title="Sample PDF Report"
+            >
+    <f:facet name="header">
+        <p:font size="12">
+            <p:header borderWidthTop="0" borderWidthBottom="0.4" alignment="center">
+                <p:paragraph indentationLeft="50">
+                    REPORT HEADER
+                </p:paragraph>
+            </p:header>
+            <p:footer borderWidthTop="1" borderColorTop="black" borderWidthBottom="0" alignment="center">
+                [<p:pageNumber/>]
+            </p:footer>
+        </p:font>
+    </f:facet>
+    <ui:repeat var="item" value="#{reportAction.reportData}">
+        <p:font size="8">
+            <p:table columns="1" headerRows="1" widthPercentage="100">
+                <p:font style="bold">
+                    <p:cell verticalAlignment="bottom">Report Data</p:cell>
+                </p:font>
+                <p:cell>#{item}</p:cell>
+            </p:table>
+        </p:font>
+    </ui:repeat>
+</p:document>
